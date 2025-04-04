@@ -27,6 +27,8 @@ cat help.json | dist/mcp-use-browser.exe
 mcp-use-browser.exe --transport stdio
 ```
 
+[MCP 客户端接入示例](./mcpClient.js)
+
 ### 3. SSE模式
 
 直接双击可执行文件运行MCP Server的SSE模式。
