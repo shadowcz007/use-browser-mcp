@@ -9,7 +9,8 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 
 const transport = new StdioClientTransport({
   command: 'dist/mcp-use-browser.exe',
-  args: ['--transport', 'stdio'],
+  // command: 'node',
+  args: [  '--transport', 'stdio'],
   stderr: 'pipe'
 })
 
@@ -70,9 +71,19 @@ try {
   }
 
   if (capabilities.tools) {
-    console.log('正在获取可用工具...')
-    const tools = await client.listTools()
-    console.log('可用工具列表:', JSON.stringify(tools, null, 2))
+    // console.log('正在获取可用工具...')
+    // const tools = await client.listTools()
+    // console.log('可用工具列表:', JSON.stringify(tools, null, 2))
+
+  
+    const result = await client.callTool({
+      name: 'browser_navigate',
+      arguments: {
+       url:"https://news.ycombinator.com/"
+      }
+    });
+    console.log(result)
+
   } else {
     console.log('服务器不支持工具功能')
   }
